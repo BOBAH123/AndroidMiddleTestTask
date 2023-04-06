@@ -5,8 +5,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.youarelaunched.challenge.middle.R
 import com.youarelaunched.challenge.ui.theme.VendorAppTheme
 
 @Composable
@@ -20,7 +22,7 @@ fun NoResults() {
         Column {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Sorry! No results found...",
+                text = stringResource(R.string.msg_no_results_title),
                 textAlign = TextAlign.Center,
                 color = VendorAppTheme.colors.textDarkGreen,
                 style = VendorAppTheme.typography.h2
@@ -30,8 +32,7 @@ fun NoResults() {
 
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Please try a different search request\n" +
-                        "or browse businesses from the list",
+                text = stringResource(R.string.msg_no_results_description),
                 textAlign = TextAlign.Center,
                 color = VendorAppTheme.colors.textDark,
                 style = VendorAppTheme.typography.subtitle2,
