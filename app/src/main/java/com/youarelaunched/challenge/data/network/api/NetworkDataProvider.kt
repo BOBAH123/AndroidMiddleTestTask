@@ -28,4 +28,21 @@ class NetworkDataProvider @Inject constructor(
             .vendors
     }
 
+    override suspend fun getVendorsWithCompanyName(
+        companyName: String
+    ): List<NetworkVendor> = withContext(workDispatcher) {
+        val json = appContext.assets
+            .open("vendors.json")
+            .bufferedReader()
+            .use {
+                it.readText()
+            }
+
+        Gson()
+            .fromJson(json, NetworkVendorsData::class.java)
+            .vendors
+            .filter {
+                it.companyName.contains(companyName, ignoreCase = true)
+            }
+    }
 }
